@@ -1,18 +1,32 @@
 <template>
   <div>
     <h3>ログインページ</h3>
-    <br>
+    <br><br>
     <p v-if="failureMessageFlg">※登録されていません。</p>
-    UserID: <input v-model="userId" placeholder="Please input your userID">
-    <br><br>
-    Password: <input v-model="password" placeholder="Prease input your password">
-    <br><br><br>
-    <button @click="loginCheck();">ログイン</button>
-    <br><br>
-    <button @click="createUser();">ユーザ新規作成</button>
-    <br><br>
-    <router-link :to="{ name: 'UserListPage' }">ユーザ一覧</router-link>
+    
+    <p class="font-weight-bold text-secondary">ユーザID</p>
+    <b-form-input v-model="userId" placeholder="入力してください。"></b-form-input><br><br>
+    
+    <p class="font-weight-bold text-secondary">パスワード</p>
+    <b-form-input
+      :id="`type-${password}`"
+      type="password" v-model="password"
+      placeholder="入力してください。"
+    ></b-form-input>
 
+    <br><br><br>
+
+    <b-button
+      variant="outline-primary"
+      @click="loginCheck();"
+    >
+    ログイン</b-button><br><br>
+    <b-button
+      variant="outline-primary"
+      @click="createUser();"
+    >
+    ユーザ新規作成</b-button><br><br>
+    <router-link :to="{ name: 'UserListPage' }">ユーザ一覧</router-link>
   </div>
 </template>
 
